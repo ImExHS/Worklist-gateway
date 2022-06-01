@@ -22,7 +22,7 @@ class GetStudies
         $statusCode = $response->getStatusCode();
 
         if($statusCode !== 200){
-            throw new Exception('Error recuperando libros');
+            throw new Exception('Error retrieving studies');
         }
 
         $contentType = $response->getHeaders()['content-type'][0];
