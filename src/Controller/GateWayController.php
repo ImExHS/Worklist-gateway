@@ -15,7 +15,7 @@ class GateWayController extends AbstractController
     /**
      * @Route("/gateway/{provenance}", name="app_gate_way")
      */
-    public function converter(GetStudies $studies, Request $request, $provenance = 'pacs'): JsonResponse
+    public function converter(GetStudies $studies, Request $request, $provenance = ''): JsonResponse
     {
         if ($provenance === 'pacs'){
             $method = 'GET';
