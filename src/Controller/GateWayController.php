@@ -13,18 +13,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class GateWayController extends AbstractController
 {
     /**
-     * @Route("/gateway/{provenance}", name="app_gate_way")
+     * @Route("/gateway/{dataSource}", name="app_gate_way")
      */
-    public function converter(GetStudies $studies, Request $request, $provenance = ''): JsonResponse
+    public function converter(GetStudies $studies, Request $request, $dataSource = ''): JsonResponse
     {
-        if ($provenance === 'pacs'){
+
+        if ($dataSource === 'label-Pacs'){
             $method = 'GET';
             $domain = 'http://143.198.25.142:8012/dcm4chee-arc/aets/DCM4CHEE/rs/studies?includefield=00081030';
-        }        
-
-        $studyList = $studies->getRequest($method, $domain);
-        $studyListCoverted = new UtilsConvertData();
-        $studyListCoverted = $studyListCoverted->convertDataPacs($studyList);
+            $studyList = $studies->getRequest($method, $domain);
+            $studyListCoverted = new UtilsConvertData();
+            $studyListCoverted = $studyListCoverted->convertDataPacs($studyList);
+        }     
+        else{
+            $studyListCoverted = [];
+        }   
 
         return new JsonResponse($studyListCoverted);
     }
