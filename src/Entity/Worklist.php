@@ -18,11 +18,6 @@ class Worklist
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nameWorklist;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $current;
@@ -40,28 +35,11 @@ class Worklist
     /**
      * @ORM\Column(type="boolean")
      */
-    private $itsTheBegining;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
     private $itsTheFinal;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNameWorklist(): ?string
-    {
-        return $this->nameWorklist;
-    }
-
-    public function setNameWorklist(string $nameWorklist): self
-    {
-        $this->nameWorklist = $nameWorklist;
-
-        return $this;
     }
 
     public function getCurrent(): ?\DateTimeInterface
@@ -96,18 +74,6 @@ class Worklist
     public function setNextNode(string $next_node): self
     {
         $this->next_node = $next_node;
-
-        return $this;
-    }
-
-    public function isItsTheBegining(): ?bool
-    {
-        return $this->itsTheBegining;
-    }
-
-    public function setItsTheBegining(bool $itsTheBegining): self
-    {
-        $this->itsTheBegining = $itsTheBegining;
 
         return $this;
     }
